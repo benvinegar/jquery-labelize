@@ -8,7 +8,14 @@ Labelize is a jQuery plugin that lets you give arbitrary container elements
 <label/>-like properties. It's designed for use with jQuery 1.2.0 and above.
 
 
-= Example
+= Demo
+
+For a demo of Labelize in action, click here:
+
+http://www.benlog.org/labelize/demo.html
+
+
+= Simple Example
 
 <div class="myLabel">
   <input type="checkbox">Enabled
@@ -24,12 +31,11 @@ Labelize is a jQuery plugin that lets you give arbitrary container elements
 
 = Example w/ Label Hover Effects
 
+Because IE6 doesn't support the :hover css command for div elements,
+Labelize lets you define a hoverClass that is applied on label hover:
+
 <script>
-  $('.myLabel').labelize().mouseover(function() {
-  	$(this).addClass('hoverClass');
-  }).mouseout(function() {
-  	$(this).removeClass('hoverClass');
-  });
+  $('.myLabel').labelize('hoverClass');
 </script>
 
 
