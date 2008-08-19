@@ -12,14 +12,25 @@
  *
  */
 
-jQuery.fn.labelize = function() {
+jQuery.fn.labelize = function(hoverClass) {
+
+  var containers = $(this).filter(':has(input)');
   
-  /* Apply cursor attribute to containers */
-  $(this).css('cursor', 'pointer');
-    
-  $(this).filter(':has(input)').click(jQuery.fn.labelize.labelClickEvent);
+  // Apply cursor attribute to containers
+  $(containers).css('cursor', 'pointer');
   
-  var containers = this;
+  // Apply click event to container
+  containers.click(jQuery.fn.labelize.labelClickEvent);
+  
+  // Apply optional hoverClass
+  if (hoverClass) {
+    containers
+      .mouseover(function() { $(this).addClass(hoverClass) })
+      .mouseout (function() { $(this).removeClass(hoverClass) });
+  }
+  
+  // Remove encompassing label event when hovering over the
+  // input element; this makes sure click() events don't fire twice
   $('input', this)
     .mouseover(function() {
       $(containers).unbind('click', jQuery.fn.labelize.labelClickEvent);
