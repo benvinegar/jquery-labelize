@@ -12,36 +12,39 @@
  *
  */
 
-jQuery.fn.labelize = function(hoverClass) {
-
-  var containers = $(this).filter(':has(input)');
+(function($) { 
+  $.fn.labelize = function(hoverClass) {
   
-  // Apply cursor attribute to containers
-  $(containers).css('cursor', 'pointer');
-  
-  // Apply click event to container
-  containers.click(jQuery.fn.labelize.labelClickEvent);
-  
-  // Apply optional hoverClass
-  if (hoverClass) {
-    containers
-      .mouseover(function() { $(this).addClass(hoverClass) })
-      .mouseout (function() { $(this).removeClass(hoverClass) });
+    var containers = $(this).filter(':has(input)');
+    
+    // Apply cursor attribute to containers
+    $(containers).css('cursor', 'pointer');
+    
+    // Apply click event to container
+    containers.click($.fn.labelize.labelClickEvent);
+    
+    // Apply optional hoverClass
+    if (hoverClass) {
+      containers
+        .mouseover(function() { $(this).addClass(hoverClass) })
+        .mouseout (function() { $(this).removeClass(hoverClass) });
+    }
+    
+    // Remove encompassing label event when hovering over the
+    // input element; this makes sure click() events don't fire twice
+    $('input', this)
+      .mouseover(function() {
+        $(containers).unbind('click', $.fn.labelize.labelClickEvent);
+      })
+      .mouseout(function() {
+        $(containers).click($.fn.labelize.labelClickEvent);
+    });
+      
+    return this;
   }
   
-  // Remove encompassing label event when hovering over the
-  // input element; this makes sure click() events don't fire twice
-  $('input', this)
-    .mouseover(function() {
-      $(containers).unbind('click', jQuery.fn.labelize.labelClickEvent);
-    })
-    .mouseout(function() {
-      $(containers).click(jQuery.fn.labelize.labelClickEvent);
-  });
-    
-  return this;
-}
-
-jQuery.fn.labelize.labelClickEvent = function() {
-  $('input', this).click();
-}
+  $.fn.labelize.labelClickEvent = function() {
+    $('input', this).click();
+  }
+  
+})(jQuery);
