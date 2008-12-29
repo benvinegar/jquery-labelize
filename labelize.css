@@ -1,0 +1,76 @@
+/* reset.css */
+dy, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* main labelize css */
+
+body { line-height: 1.5em; background-color: #f8f8f8; margin: 30px 0 30px 0; font-family: helvetica, arial, sans-serif; font-size: 13.34px;}
+#page { background-color: #fff; margin: 0 auto; width: 600px; border-left: 1px solid #bbc; padding: 20px 20px 20px 20px;
+  border-bottom: 1px solid #bbc; border-top: 1px solid #eee; border-right: 1px solid #eee;
+}
+h1 { font-size: 2em; } h2 { font-size: 1.2em; border-bottom: 1px solid #eee; margin: 30px 0 1em 0;}
+h1,h2,h2,h4,p,div,ul { margin-bottom: 1em; }
+.example { margin: 0px 0 30px 0; padding-left: 0; }
+.code { background-color: #fafafa; padding: 8px 16px; font-size: 0.9em; }
+#footer { text-align: right; font-size: 0.8em; }
+ul.bullet-points { list-style-type: circle; margin-left: 2em; }
+.code strong { float: right; font-weight: normal; color: #aaa; margin-bottom: 1em; background-color: #f0f0f0; padding: 2px; }
+
+/* radio labels */
+.radio-label { padding: 5px 10px; background-color: #eef; width: 200px; }
+.radio-label-hover { background-color: #88f; }
+.input-label { padding: 5px 10px; background-color: #fee; }
+
+/* table example */
+table { border: 1px solid #aaa; width: 300px; }
+td { padding: 4px; }
+th { background-color: #eee; }
+.tr-label-hover td { background-color: #f8f8f8; }
