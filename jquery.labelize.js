@@ -15,13 +15,23 @@
 (function($) {
   $.fn.labelize = function(hoverClass) {
   
+    function labelClickEvent() {
+      // remove encompassing event (prevents jQuery recursion error in 1.3.x)
+      $(this).unbind('click', labelClickEvent); 
+      
+      // call .click on owned input
+      $('input', this).click();
+      
+      // re-apply the event after we're done
+      $(this).click(labelClickEvent);
+    }
+    
     var containers = $(this).filter(':has(input)');
     
-    // Apply cursor attribute to containers
-    $(containers).css('cursor', 'pointer');
-    
-    // Apply click event to container
-    containers.click($.fn.labelize.labelClickEvent);
+    // Apply cursor attribute and onclick event to containers
+    $(containers)
+      .css('cursor', 'pointer')
+      .click(labelClickEvent);
     
     // Apply optional hoverClass
     if (hoverClass) {
@@ -34,17 +44,13 @@
     // input element; this makes sure click() events don't fire twice
     $('input', this)
       .mouseover(function() {
-        $(containers).unbind('click', $.fn.labelize.labelClickEvent);
+        $(containers).unbind('click', labelClickEvent);
       })
       .mouseout(function() {
-        $(containers).click($.fn.labelize.labelClickEvent);
+        $(containers).click(labelClickEvent);
     });
       
     return this;
-  }
-  
-  $.fn.labelize.labelClickEvent = function() {
-    $('input', this).click();
   }
   
 })(jQuery);
