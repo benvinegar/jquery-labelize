@@ -4,7 +4,7 @@
  * This work is distributed under the MIT License:
  * http://www.opensource.org/licenses/mit-license.php
  *
- * Copyright 2008, Ben Vinegar [ ben ! benlog dot org ]
+ * Copyright Ben Vinegar [ ben ! benlog dot org ]
  *
  * Usage:
  *
@@ -20,7 +20,13 @@
       $(this).unbind('click', labelClickEvent); 
       
       // call .click on owned input
-      $('input', this).click();
+      $input = $(this).find('input');
+      
+      if ($input.is(':checked')) {
+        $input.removeAttr('checked').change();
+      } else {
+        $input.attr('checked', 'checked').change();
+      }
       
       // re-apply the event after we're done
       $(this).click(labelClickEvent);
@@ -48,6 +54,14 @@
       })
       .mouseout(function() {
         $(containers).click(labelClickEvent);
+    }).focus(function() {
+        $(containers).unbind('click', labelClickEvent);
+    }).blur(function() {
+        $(containers).click(labelClickEvent);
+    }).click(function() {
+        if($(this).is('[type=checkbox], [type=radio]') && $.browser.msie) {
+          $(this).change();
+        }
     });
       
     return this;
