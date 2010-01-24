@@ -1,45 +1,46 @@
---------------------------------------------------------------------------
- Labelize: a jQuery Plugin
-==========================================================================
+h1. Labelize
 
-= About
+Labelize is a jQuery plugin that lets you give arbitrary container elements &lt;label/&gt;-like properties, and smooth over click/change event compatibility between browsers.
 
-Labelize is a jQuery plugin that lets you give arbitrary container elements
-<label/>-like properties. It's designed for use with jQuery 1.2.0 and above.
+h2. Features
 
+* Works with any input element (radio buttons, text inputs, etc.)
+* Preserves click() and change() events between browsers
+* Optional: specify onhover class
 
-= Demo
+h2. Demo
 
-For a demo of Labelize in action, click here:
+For a demo of Labelize in action, click here: http://bentlegen.github.com/labelize/demo
 
-http://www.benlog.org/labelize/demo.html
+h2. Usage
 
+h3. Simple case
 
-= Simple Example
+Container div wrapping a checkbox.
 
-<div class="myLabel">
+<pre><code><div class="myLabel">
   <input type="checkbox">Enabled
 </div>
-
-<script>
+</code></pre>
+  
+<pre><code><script>
   // Clicking anywhere on the "myLabel" div checks/unchecks
   // the contained checkbox
   
   $('.myLabel').labelize();
 </script>
+</code></pre>
 
 
-= Example w/ Label Hover Effects
+h3. With label hover effect
 
-Because IE6 doesn't support the :hover css command for div elements,
-Labelize lets you define a hoverClass that is applied on label hover:
+Because IE6 doesn't support the :hover css command for div elements, Labelize lets you define a hoverClass that is applied on label hover:
 
-<script>
+<pre><code><script>
   $('.myLabel').labelize('hoverClass');
 </script>
+</code></pre>
 
+h2. License
 
-= More
-
-Labelize works with any input element (radio buttons, text inputs, etc.), and
-preserves click() and change() events between browsers.
+MIT License. See LICENSE for more information.
