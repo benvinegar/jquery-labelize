@@ -10,7 +10,7 @@ h2. Features
 
 h2. Demo
 
-For a demo of Labelize in action, click here: http://bentlegen.github.com/labelize/demo
+"http://bentlegen.github.com/labelize/demo":http://bentlegen.github.com/labelize/demo
 
 h2. Usage
 
